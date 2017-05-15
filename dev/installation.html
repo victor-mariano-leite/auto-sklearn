@@ -119,6 +119,7 @@
 <li><a class="reference internal" href="#">Installation</a><ul>
 <li><a class="reference internal" href="#system-requirements">System requirements</a></li>
 <li><a class="reference internal" href="#installing-auto-sklearn">Installing auto-sklearn</a></li>
+<li><a class="reference internal" href="#ubuntu-installation">Ubuntu installation</a></li>
 <li><a class="reference internal" href="#anaconda-installation">Anaconda installation</a></li>
 <li><a class="reference internal" href="#windows-osx-compability">Windows/OSX compability</a><ul>
 <li><a class="reference internal" href="#windows">Windows</a></li>
@@ -141,7 +142,7 @@
 <ul class="simple">
 <li>Linux operating system (for example Ubuntu),</li>
 <li>Python (&gt;=3.4).</li>
-<li>C++ compiler (with C++11 supports) and SWIG</li>
+<li>C++ compiler (with C++11 supports) and SWIG (version 3.0 or later)</li>
 </ul>
 <p>For an explanation of missing Microsoft Windows and MAC OSX support please
 check the Section <a class="reference internal" href="#windows-osx-compability">Windows/OSX compability</a>.</p>
@@ -158,6 +159,14 @@ check the Section <a class="reference internal" href="#windows-osx-compability">
 </div>
 <p>We recommend installing <em>auto-sklearn</em> into a <a class="reference external" href="http://docs.python-guide.org/en/latest/dev/virtualenvs/">virtual environment</a> or an <a class="reference external" href="https://conda.io/docs/using/envs.html">Anaconda
 environment</a>.</p>
+</div>
+<div class="section" id="ubuntu-installation">
+<h2>Ubuntu installation<a class="headerlink" href="#ubuntu-installation" title="Permalink to this headline">¶</a></h2>
+<p>To provide a C++11 building environment and the lateste SWIG version on Ubuntu,
+run:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">build</span><span class="o">-</span><span class="n">essential</span> <span class="n">swig</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="anaconda-installation">
 <h2>Anaconda installation<a class="headerlink" href="#anaconda-installation" title="Permalink to this headline">¶</a></h2>
@@ -229,7 +238,7 @@ and <a class="reference external" href="https://github.com/automl/ConfigSpace">C
     </p>
     <p>
         &copy; Copyright 2014-2017, Matthias Feurer, Aaron Klein, Katharina Eggensperger, Jost Tobias Springenberg, Manuel Blum, Frank Hutter.<br/>
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.6.<br/>
     </p>
   </div>
 </footer>
