@@ -137,7 +137,6 @@
 <span class="kn">from</span> <span class="nn">autosklearn.util.backend</span> <span class="k">import</span> <span class="n">create</span>
 
 
-
 <span class="k">class</span> <span class="nc">AutoMLDecorator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">automl</span><span class="p">):</span>
@@ -502,7 +501,7 @@
 <span class="sd">        y : array-like, shape = [n_samples] or [n_samples, n_outputs]</span>
 <span class="sd">            The target classes.</span>
 
-<span class="sd">        metric : callable, optional (default=&#39;acc_metric&#39;)</span>
+<span class="sd">        metric : callable, optional (default=&#39;autosklearn.metrics.accuracy&#39;)</span>
 <span class="sd">            An instance of :class:`autosklearn.metrics.Scorer` as created by</span>
 <span class="sd">            :meth:`autosklearn.metrics.make_scorer`. These are the `Built-in</span>
 <span class="sd">            Metrics`_.</span>
@@ -511,7 +510,7 @@
 <span class="sd">            List of str of `len(X.shape[1])` describing the attribute type.</span>
 <span class="sd">            Possible types are `Categorical` and `Numerical`. `Categorical`</span>
 <span class="sd">            attributes will be automatically One-Hot encoded. The values</span>
-<span class="sd">            used for a categorical attribute must be integers, obtainde for</span>
+<span class="sd">            used for a categorical attribute must be integers, obtained for</span>
 <span class="sd">            example by `sklearn.preprocessing.LabelEncoder</span>
 <span class="sd">            &lt;http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html&gt;`_.</span>
 
@@ -587,11 +586,10 @@
 <span class="sd">        y : array-like, shape = [n_samples] or [n_samples, n_outputs]</span>
 <span class="sd">            The regression target.</span>
 
-<span class="sd">        metric : str, optional (default=&#39;r2_metric&#39;)</span>
-<span class="sd">            The metric to optimize for. Can be one of: [&#39;r2_metric&#39;,</span>
-<span class="sd">            &#39;a_metric&#39;]. A description of the metrics can be found in</span>
-<span class="sd">            `the paper describing the AutoML Challenge</span>
-<span class="sd">            &lt;http://www.causality.inf.ethz.ch/AutoML/automl_ijcnn15.pdf&gt;`_.</span>
+<span class="sd">        metric : callable, optional (default=&#39;autosklearn.metrics.accuracy&#39;)</span>
+<span class="sd">            An instance of :class:`autosklearn.metrics.Scorer` as created by</span>
+<span class="sd">            :meth:`autosklearn.metrics.make_scorer`. These are the `Built-in</span>
+<span class="sd">            Metrics`_.</span>
 
 <span class="sd">        feat_type : list, optional (default=None)</span>
 <span class="sd">            List of str of `len(X.shape[1])` describing the attribute type.</span>
@@ -664,7 +662,7 @@
             <span class="k">if</span> <span class="n">task</span> <span class="o">==</span> <span class="n">MULTILABEL_CLASSIFICATION</span><span class="p">:</span>
                 <span class="n">metric</span> <span class="o">=</span> <span class="n">f1_macro</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">metric</span><span class="o">=</span><span class="n">accuracy</span>
+                <span class="n">metric</span> <span class="o">=</span> <span class="n">accuracy</span>
 
         <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_target_classes</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 
@@ -708,7 +706,6 @@
             <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 
         <span class="k">return</span> <span class="n">y</span>
-
 
     <span class="k">def</span> <span class="nf">predict</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
         <span class="n">predicted_probabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_automl</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span>

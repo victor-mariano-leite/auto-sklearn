@@ -316,7 +316,7 @@ random search</li>
 <blockquote>
 <div><p>The target classes.</p>
 </div></blockquote>
-<p><strong>metric</strong> : callable, optional (default=&#8217;acc_metric&#8217;)</p>
+<p><strong>metric</strong> : callable, optional (default=&#8217;autosklearn.metrics.accuracy&#8217;)</p>
 <blockquote>
 <div><p>An instance of <code class="xref py py-class docutils literal"><span class="pre">autosklearn.metrics.Scorer</span></code> as created by
 <a class="reference internal" href="#autosklearn.metrics.make_scorer" title="autosklearn.metrics.make_scorer"><code class="xref py py-meth docutils literal"><span class="pre">autosklearn.metrics.make_scorer()</span></code></a>. These are the <a class="reference internal" href="#built-in-metrics">Built-in
@@ -327,7 +327,7 @@ Metrics</a>.</p>
 <div><p>List of str of <cite>len(X.shape[1])</cite> describing the attribute type.
 Possible types are <cite>Categorical</cite> and <cite>Numerical</cite>. <cite>Categorical</cite>
 attributes will be automatically One-Hot encoded. The values
-used for a categorical attribute must be integers, obtainde for
+used for a categorical attribute must be integers, obtained for
 example by <a class="reference external" href="http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelEncoder.html">sklearn.preprocessing.LabelEncoder</a>.</p>
 </div></blockquote>
 <p><strong>dataset_name</strong> : str, optional (default=None)</p>
@@ -704,11 +704,11 @@ random search</li>
 <blockquote>
 <div><p>The regression target.</p>
 </div></blockquote>
-<p><strong>metric</strong> : str, optional (default=&#8217;r2_metric&#8217;)</p>
+<p><strong>metric</strong> : callable, optional (default=&#8217;autosklearn.metrics.accuracy&#8217;)</p>
 <blockquote>
-<div><p>The metric to optimize for. Can be one of: [&#8216;r2_metric&#8217;,
-&#8216;a_metric&#8217;]. A description of the metrics can be found in
-<a class="reference external" href="http://www.causality.inf.ethz.ch/AutoML/automl_ijcnn15.pdf">the paper describing the AutoML Challenge</a>.</p>
+<div><p>An instance of <code class="xref py py-class docutils literal"><span class="pre">autosklearn.metrics.Scorer</span></code> as created by
+<a class="reference internal" href="#autosklearn.metrics.make_scorer" title="autosklearn.metrics.make_scorer"><code class="xref py py-meth docutils literal"><span class="pre">autosklearn.metrics.make_scorer()</span></code></a>. These are the <a class="reference internal" href="#built-in-metrics">Built-in
+Metrics</a>.</p>
 </div></blockquote>
 <p><strong>feat_type</strong> : list, optional (default=None)</p>
 <blockquote>
