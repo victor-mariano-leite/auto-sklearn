@@ -292,15 +292,17 @@
 <span class="sd">        resampling_strategy : string, optional (&#39;holdout&#39;)</span>
 <span class="sd">            how to to handle overfitting, might need &#39;resampling_strategy_arguments&#39;</span>
 
-<span class="sd">            * &#39;holdout&#39;: 66:33 (train:test) split</span>
-<span class="sd">            * &#39;holdout-iterative-fit&#39;:  66:33 (train:test) split, calls iterative</span>
+<span class="sd">            * &#39;holdout&#39;: 67:33 (train:test) split</span>
+<span class="sd">            * &#39;holdout-iterative-fit&#39;:  67:33 (train:test) split, calls iterative</span>
 <span class="sd">              fit where possible</span>
 <span class="sd">            * &#39;cv&#39;: crossvalidation, requires &#39;folds&#39;</span>
 
-<span class="sd">        resampling_strategy_arguments : dict, optional if &#39;holdout&#39; (None)</span>
+<span class="sd">        resampling_strategy_arguments : dict, optional if &#39;holdout&#39; (train_size default=0.67)</span>
 <span class="sd">            Additional arguments for resampling_strategy</span>
-<span class="sd">            * &#39;holdout&#39;: None</span>
-<span class="sd">            * &#39;holdout-iterative-fit&#39;:  None</span>
+<span class="sd">            ``train_size`` should be between 0.0 and 1.0 and represent the</span>
+<span class="sd">            proportion of the dataset to include in the train split.</span>
+<span class="sd">            * &#39;holdout&#39;: {&#39;train_size&#39;: float}</span>
+<span class="sd">            * &#39;holdout-iterative-fit&#39;:  {&#39;train_size&#39;: float}</span>
 <span class="sd">            * &#39;cv&#39;: {&#39;folds&#39;: int}</span>
 
 <span class="sd">        tmp_folder : string, optional (None)</span>
