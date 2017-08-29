@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Releases &#8212; AutoSklearn 0.2.0 documentation</title>
+    <title>Releases &#8212; AutoSklearn 0.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -64,7 +64,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           auto-sklearn</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.2.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -115,13 +115,18 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Releases</a><ul>
-<li><a class="reference internal" href="#version-0-2-0">Version 0.2.0</a><ul>
-<li><a class="reference internal" href="#major-changes">Major changes</a></li>
+<li><a class="reference internal" href="#version-0-2-1">Version 0.2.1</a><ul>
+<li><a class="reference internal" href="#changes">Changes</a></li>
 <li><a class="reference internal" href="#contributors">Contributors</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#version-0-1-x">Version 0.1.x</a><ul>
+<li><a class="reference internal" href="#version-0-2-0">Version 0.2.0</a><ul>
+<li><a class="reference internal" href="#major-changes">Major changes</a></li>
 <li><a class="reference internal" href="#id2">Contributors</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#version-0-1-x">Version 0.1.x</a><ul>
+<li><a class="reference internal" href="#id3">Contributors</a></li>
 </ul>
 </li>
 </ul>
@@ -134,6 +139,34 @@
       
   <span class="target" id="releases"></span><div class="section" id="id1">
 <h1>Releases<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-0-2-1">
+<h2>Version 0.2.1<a class="headerlink" href="#version-0-2-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="changes">
+<h3>Changes<a class="headerlink" href="#changes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Allows the usage of scikit-learn 0.18.2.</li>
+<li>Fixes requirement pyrfr to version <code class="docutils literal"><span class="pre">0.4.0</span></code>.</li>
+<li>Added a Dockerfile.</li>
+<li>Added the possibility to change the size of the holdout set when
+using holdout resampling strategy.</li>
+<li>Fixed a bug in QDA&#8217;s hyperparameters.</li>
+<li>Typo fixes in print statements.</li>
+<li>New method to retrieve the models used in the final ensemble.</li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Matthias Feurer</li>
+<li>Katharina Eggensperger</li>
+<li>Felix Leung</li>
+<li>caoyi0905</li>
+<li>Young Ryul Bae</li>
+<li>Vicente Alencar</li>
+<li>Lukas Großberger</li>
+</ul>
+</div>
+</div>
 <div class="section" id="version-0-2-0">
 <h2>Version 0.2.0<a class="headerlink" href="#version-0-2-0" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="major-changes">
@@ -150,8 +183,8 @@ the pyninsher.</li>
 <code class="docutils literal"><span class="pre">predict_proba</span></code>. By <a class="reference external" href="https://github.com/lsorber">Laurent Sorber</a>.</li>
 </ul>
 </div>
-<div class="section" id="contributors">
-<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h3>Contributors<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Matthias Feurer</li>
 <li>Katharina Eggensperger</li>
@@ -163,8 +196,8 @@ the pyninsher.</li>
 <div class="section" id="version-0-1-x">
 <h2>Version 0.1.x<a class="headerlink" href="#version-0-1-x" title="Permalink to this headline">¶</a></h2>
 <p>There are no release notes for auto-sklearn prior to version 0.2.0.</p>
-<div class="section" id="id2">
-<h3>Contributors<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Contributors<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Matthias Feurer</li>
 <li>Katharina Eggensperger</li>
