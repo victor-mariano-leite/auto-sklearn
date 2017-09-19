@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>APIs &#8212; AutoSklearn 0.2.0 documentation</title>
+    <title>APIs &#8212; AutoSklearn 0.2.1 documentation</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.0',
+        VERSION:     '0.2.1',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="_static/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -64,7 +64,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           auto-sklearn</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.2.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.2.1</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -216,17 +216,19 @@ include_preprocessors.</p>
 <blockquote>
 <div><p>how to to handle overfitting, might need &#8216;resampling_strategy_arguments&#8217;</p>
 <ul class="simple">
-<li>&#8216;holdout&#8217;: 66:33 (train:test) split</li>
-<li>&#8216;holdout-iterative-fit&#8217;:  66:33 (train:test) split, calls iterative
+<li>&#8216;holdout&#8217;: 67:33 (train:test) split</li>
+<li>&#8216;holdout-iterative-fit&#8217;:  67:33 (train:test) split, calls iterative
 fit where possible</li>
 <li>&#8216;cv&#8217;: crossvalidation, requires &#8216;folds&#8217;</li>
 </ul>
 </div></blockquote>
-<p><strong>resampling_strategy_arguments</strong> : dict, optional if &#8216;holdout&#8217; (None)</p>
+<p><strong>resampling_strategy_arguments</strong> : dict, optional if &#8216;holdout&#8217; (train_size default=0.67)</p>
 <blockquote>
 <div><p>Additional arguments for resampling_strategy
-* &#8216;holdout&#8217;: None
-* &#8216;holdout-iterative-fit&#8217;:  None
+<code class="docutils literal"><span class="pre">train_size</span></code> should be between 0.0 and 1.0 and represent the
+proportion of the dataset to include in the train split.
+* &#8216;holdout&#8217;: {&#8216;train_size&#8217;: float}
+* &#8216;holdout-iterative-fit&#8217;:  {&#8216;train_size&#8217;: float}
 * &#8216;cv&#8217;: {&#8216;folds&#8217;: int}</p>
 </div></blockquote>
 <p><strong>tmp_folder</strong> : string, optional (None)</p>
@@ -289,11 +291,11 @@ random search</li>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="6%" />
-<col width="94%" />
+<col width="7%" />
+<col width="93%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>cv_results_</td>
+<tr class="row-odd"><td><strong>cv_results_</strong></td>
 <td>(dict of numpy (masked) ndarrays) A dict with keys as column headers and values as columns, that can be imported into a pandas <code class="docutils literal"><span class="pre">DataFrame</span></code>.  Not all keys returned by scikit-learn are supported yet.</td>
 </tr>
 </tbody>
@@ -385,12 +387,26 @@ introduced in <cite>Getting Most out of Ensemble Selection</cite>.</p>
 </div></blockquote>
 <p><strong>ensemble_size</strong> : int</p>
 <blockquote>
-<div><p>Size of the ensemble built by <cite>Ensomble Selection</cite>.</p>
+<div><p>Size of the ensemble built by <cite>Ensemble Selection</cite>.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="autosklearn.classification.AutoSklearnClassifier.get_models_with_weights">
+<code class="descname">get_models_with_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier.get_models_with_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the final ensemble found by auto-sklearn.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[(weight_1, model_1), ..., (weight_n, model_n)]</td>
 </tr>
 </tbody>
 </table>
@@ -604,17 +620,19 @@ include_preprocessors.</p>
 <blockquote>
 <div><p>how to to handle overfitting, might need &#8216;resampling_strategy_arguments&#8217;</p>
 <ul class="simple">
-<li>&#8216;holdout&#8217;: 66:33 (train:test) split</li>
-<li>&#8216;holdout-iterative-fit&#8217;:  66:33 (train:test) split, calls iterative
+<li>&#8216;holdout&#8217;: 67:33 (train:test) split</li>
+<li>&#8216;holdout-iterative-fit&#8217;:  67:33 (train:test) split, calls iterative
 fit where possible</li>
 <li>&#8216;cv&#8217;: crossvalidation, requires &#8216;folds&#8217;</li>
 </ul>
 </div></blockquote>
-<p><strong>resampling_strategy_arguments</strong> : dict, optional if &#8216;holdout&#8217; (None)</p>
+<p><strong>resampling_strategy_arguments</strong> : dict, optional if &#8216;holdout&#8217; (train_size default=0.67)</p>
 <blockquote>
 <div><p>Additional arguments for resampling_strategy
-* &#8216;holdout&#8217;: None
-* &#8216;holdout-iterative-fit&#8217;:  None
+<code class="docutils literal"><span class="pre">train_size</span></code> should be between 0.0 and 1.0 and represent the
+proportion of the dataset to include in the train split.
+* &#8216;holdout&#8217;: {&#8216;train_size&#8217;: float}
+* &#8216;holdout-iterative-fit&#8217;:  {&#8216;train_size&#8217;: float}
 * &#8216;cv&#8217;: {&#8216;folds&#8217;: int}</p>
 </div></blockquote>
 <p><strong>tmp_folder</strong> : string, optional (None)</p>
@@ -677,11 +695,11 @@ random search</li>
 <p class="rubric">Attributes</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="6%" />
-<col width="94%" />
+<col width="7%" />
+<col width="93%" />
 </colgroup>
 <tbody valign="top">
-<tr class="row-odd"><td>cv_results_</td>
+<tr class="row-odd"><td><strong>cv_results_</strong></td>
 <td>(dict of numpy (masked) ndarrays) A dict with keys as column headers and values as columns, that can be imported into a pandas <code class="docutils literal"><span class="pre">DataFrame</span></code>.  Not all keys returned by scikit-learn are supported yet.</td>
 </tr>
 </tbody>
@@ -771,12 +789,26 @@ introduced in <cite>Getting Most out of Ensemble Selection</cite>.</p>
 </div></blockquote>
 <p><strong>ensemble_size</strong> : int</p>
 <blockquote>
-<div><p>Size of the ensemble built by <cite>Ensomble Selection</cite>.</p>
+<div><p>Size of the ensemble built by <cite>Ensemble Selection</cite>.</p>
 </div></blockquote>
 </td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">self</p>
 </td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="autosklearn.regression.AutoSklearnRegressor.get_models_with_weights">
+<code class="descname">get_models_with_weights</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor.get_models_with_weights" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of the final ensemble found by auto-sklearn.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[(weight_1, model_1), ..., (weight_n, model_n)]</td>
 </tr>
 </tbody>
 </table>
