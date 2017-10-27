@@ -351,6 +351,9 @@
 <span class="sd">        All parameters are ``None`` by default. If no other value is given,</span>
 <span class="sd">        the default values which were set in a call to ``fit()`` are used.</span>
 
+<span class="sd">        Calling this function is only necessary if ``ensemble_size==0``, for</span>
+<span class="sd">        example when executing *auto-sklearn* in parallel.</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 <span class="sd">        y : array-like</span>
@@ -476,6 +479,9 @@
             <span class="n">dataset_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Fit *auto-sklearn* to given training set (X, y).</span>
 
+<span class="sd">        Fit both optimizes the machine learning models and builds an ensemble</span>
+<span class="sd">        out of them. To disable ensembling, set ``ensemble_size==1``.</span>
+
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
 
@@ -556,7 +562,10 @@
             <span class="n">metric</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">feat_type</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
             <span class="n">dataset_name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Fit *autosklearn* to given training set (X, y).</span>
+        <span class="sd">&quot;&quot;&quot;Fit *Auto-sklearn* to given training set (X, y).</span>
+
+<span class="sd">        Fit both optimizes the machine learning models and builds an ensemble</span>
+<span class="sd">        out of them. To disable ensembling, set ``ensemble_size==1``.</span>
 
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>

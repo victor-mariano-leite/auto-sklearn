@@ -304,6 +304,8 @@ random search</li>
 <dt id="autosklearn.classification.AutoSklearnClassifier.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnClassifier.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit <em>auto-sklearn</em> to given training set (X, y).</p>
+<p>Fit both optimizes the machine learning models and builds an ensemble
+out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==1</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -350,6 +352,8 @@ md5 hash of the dataset.</p>
 <dd><p>Fit an ensemble to models trained during an optimization process.</p>
 <p>All parameters are <code class="docutils literal"><span class="pre">None</span></code> by default. If no other value is given,
 the default values which were set in a call to <code class="docutils literal"><span class="pre">fit()</span></code> are used.</p>
+<p>Calling this function is only necessary if <code class="docutils literal"><span class="pre">ensemble_size==0</span></code>, for
+example when executing <em>auto-sklearn</em> in parallel.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -707,7 +711,9 @@ random search</li>
 <dl class="method">
 <dt id="autosklearn.regression.AutoSklearnRegressor.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnRegressor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit <em>autosklearn</em> to given training set (X, y).</p>
+<dd><p>Fit <em>Auto-sklearn</em> to given training set (X, y).</p>
+<p>Fit both optimizes the machine learning models and builds an ensemble
+out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==1</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -752,6 +758,8 @@ md5 hash of the dataset.</p>
 <dd><p>Fit an ensemble to models trained during an optimization process.</p>
 <p>All parameters are <code class="docutils literal"><span class="pre">None</span></code> by default. If no other value is given,
 the default values which were set in a call to <code class="docutils literal"><span class="pre">fit()</span></code> are used.</p>
+<p>Calling this function is only necessary if <code class="docutils literal"><span class="pre">ensemble_size==0</span></code>, for
+example when executing <em>auto-sklearn</em> in parallel.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
