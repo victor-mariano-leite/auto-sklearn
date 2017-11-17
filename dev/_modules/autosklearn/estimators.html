@@ -148,7 +148,8 @@
                  <span class="n">delete_output_folder_after_terminate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                  <span class="n">shared_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">disable_evaluator_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                 <span class="n">configuration_mode</span><span class="o">=</span><span class="s1">&#39;SMAC&#39;</span><span class="p">):</span>
+                 <span class="n">get_smac_object_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">smac_scenario_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -253,16 +254,19 @@
 <span class="sd">              optimization/validation set, which would later on be used to build</span>
 <span class="sd">              an ensemble.</span>
 <span class="sd">            * ``&#39;model&#39;`` : do not save any model files</span>
-
-<span class="sd">        configuration_mode : ``SMAC`` or ``ROAR``</span>
-<span class="sd">            Defines the configuration mode as described in the paper</span>
-<span class="sd">            `Sequential Model-Based Optimization for General Algorithm</span>
-<span class="sd">            Configuration &lt;http://aad.informatik.uni-freiburg.de/papers/11-LION5-SMAC.pdf&gt;`_:</span>
-
-<span class="sd">            * ``SMAC`` (default): Sequential Model-based Algorithm</span>
-<span class="sd">              Configuration, which is a Bayesian optimization algorithm</span>
-<span class="sd">            * ``ROAR``: Random Online Aggressive Racing, which is basically</span>
-<span class="sd">              random search</span>
+<span class="sd">              </span>
+<span class="sd">        smac_scenario_args : dict, optional (None)</span>
+<span class="sd">            Additional arguments inserted into the scenario of SMAC. See the</span>
+<span class="sd">            `SMAC documentation &lt;https://automl.github.io/SMAC3/stable/options.html?highlight=scenario#scenario&gt;`_</span>
+<span class="sd">            for a list of available arguments.</span>
+<span class="sd">            </span>
+<span class="sd">        get_smac_object_callback : callable</span>
+<span class="sd">            Callback function to create an object of class</span>
+<span class="sd">            `smac.optimizer.smbo.SMBO &lt;https://automl.github.io/SMAC3/stable/apidoc/smac.optimizer.smbo.html&gt;`_.</span>
+<span class="sd">            The function must accept the arguments ``scenario_dict``, </span>
+<span class="sd">            ``instances``, ``num_params``, ``runhistory``, ``seed`` and ``ta``.</span>
+<span class="sd">            This is an advanced feature. Use only if you are familiar with</span>
+<span class="sd">            `SMAC &lt;https://automl.github.io/SMAC3/stable/index.html&gt;`_.</span>
 
 <span class="sd">        Attributes</span>
 <span class="sd">        ----------</span>
@@ -293,7 +297,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">delete_output_folder_after_terminate</span> <span class="o">=</span> <span class="n">delete_output_folder_after_terminate</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">shared_mode</span> <span class="o">=</span> <span class="n">shared_mode</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">disable_evaluator_output</span> <span class="o">=</span> <span class="n">disable_evaluator_output</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">configuration_mode</span> <span class="o">=</span> <span class="n">configuration_mode</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">get_smac_object_callback</span> <span class="o">=</span> <span class="n">get_smac_object_callback</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">smac_scenario_args</span> <span class="o">=</span> <span class="n">smac_scenario_args</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_automl</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -317,7 +322,6 @@
             <span class="n">backend</span><span class="o">=</span><span class="n">backend</span><span class="p">,</span>
             <span class="n">time_left_for_this_task</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">time_left_for_this_task</span><span class="p">,</span>
             <span class="n">per_run_time_limit</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">per_run_time_limit</span><span class="p">,</span>
-            <span class="n">log_dir</span><span class="o">=</span><span class="n">backend</span><span class="o">.</span><span class="n">temporary_directory</span><span class="p">,</span>
             <span class="n">initial_configurations_via_metalearning</span><span class="o">=</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">initial_configurations_via_metalearning</span><span class="p">,</span>
             <span class="n">ensemble_size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ensemble_size</span><span class="p">,</span>
@@ -330,12 +334,11 @@
             <span class="n">exclude_preprocessors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">exclude_preprocessors</span><span class="p">,</span>
             <span class="n">resampling_strategy</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">resampling_strategy</span><span class="p">,</span>
             <span class="n">resampling_strategy_arguments</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">resampling_strategy_arguments</span><span class="p">,</span>
-            <span class="n">delete_tmp_folder_after_terminate</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">delete_tmp_folder_after_terminate</span><span class="p">,</span>
-            <span class="n">delete_output_folder_after_terminate</span><span class="o">=</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">delete_output_folder_after_terminate</span><span class="p">,</span>
             <span class="n">shared_mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_mode</span><span class="p">,</span>
-            <span class="n">configuration_mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">configuration_mode</span><span class="p">,</span>
-            <span class="n">disable_evaluator_output</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">disable_evaluator_output</span><span class="p">)</span>
+            <span class="n">get_smac_object_callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_smac_object_callback</span><span class="p">,</span>
+            <span class="n">disable_evaluator_output</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">disable_evaluator_output</span><span class="p">,</span>
+            <span class="n">smac_scenario_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">smac_scenario_args</span>
+        <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">automl</span>
 
