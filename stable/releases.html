@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Releases &#8212; AutoSklearn 0.2.1 documentation</title>
+    <title>Releases &#8212; AutoSklearn 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.1',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -64,7 +64,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           auto-sklearn</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -115,18 +115,22 @@
       <div class="col-md-3">
         <div id="sidebar" class="bs-sidenav" role="complementary"><ul>
 <li><a class="reference internal" href="#">Releases</a><ul>
+<li><a class="reference internal" href="#version-0-3-0">Version 0.3.0</a><ul>
+<li><a class="reference internal" href="#contributors">Contributors</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#version-0-2-1">Version 0.2.1</a><ul>
 <li><a class="reference internal" href="#changes">Changes</a></li>
-<li><a class="reference internal" href="#contributors">Contributors</a></li>
+<li><a class="reference internal" href="#id3">Contributors</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#version-0-2-0">Version 0.2.0</a><ul>
 <li><a class="reference internal" href="#major-changes">Major changes</a></li>
-<li><a class="reference internal" href="#id2">Contributors</a></li>
+<li><a class="reference internal" href="#id4">Contributors</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#version-0-1-x">Version 0.1.x</a><ul>
-<li><a class="reference internal" href="#id3">Contributors</a></li>
+<li><a class="reference internal" href="#id5">Contributors</a></li>
 </ul>
 </li>
 </ul>
@@ -139,6 +143,29 @@
       
   <span class="target" id="releases"></span><div class="section" id="id1">
 <h1>Releases<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="version-0-3-0">
+<h2>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Upgrade to scikit-learn 0.19.1.</li>
+<li>Do not use the <code class="docutils literal"><span class="pre">DummyClassifier</span></code> or <code class="docutils literal"><span class="pre">DummyRegressor</span></code> as part of an
+ensemble. Fixes <a class="reference external" href="https://github.com/automl/auto-sklearn/issues/140">#140</a>.</li>
+<li>Fixes #295 by loading the data in the subprocess instead of the main process.</li>
+<li>Fixes #326: refitting could result in a type error. This is now fixed by
+better type checking in the classification components.</li>
+<li>Updated search space for <code class="docutils literal"><span class="pre">RandomForestClassifier</span></code>, <code class="docutils literal"><span class="pre">ExtraTreesClassifier</span></code>
+and <code class="docutils literal"><span class="pre">GradientBoostingClassifier</span></code> (fixes #358).</li>
+<li>Removal of constant features is now a part of the pipeline.</li>
+<li>Allow passing an SMBO object into the <code class="docutils literal"><span class="pre">AutoSklearnClassifier</span></code> and
+<code class="docutils literal"><span class="pre">AutoSklearnRegressor</span></code>.</li>
+</ul>
+<div class="section" id="contributors">
+<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Matthias Feurer</li>
+<li>Jesper van Engelen</li>
+</ul>
+</div>
+</div>
 <div class="section" id="version-0-2-1">
 <h2>Version 0.2.1<a class="headerlink" href="#version-0-2-1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="changes">
@@ -155,8 +182,8 @@ using holdout resampling strategy.</li>
 <li>New method to retrieve the models used in the final ensemble.</li>
 </ul>
 </div>
-<div class="section" id="contributors">
-<h3>Contributors<a class="headerlink" href="#contributors" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h3>Contributors<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Matthias Feurer</li>
 <li>Katharina Eggensperger</li>
@@ -184,8 +211,8 @@ the pyninsher.</li>
 <code class="docutils literal"><span class="pre">predict_proba</span></code>. By <a class="reference external" href="https://github.com/lsorber">Laurent Sorber</a>.</li>
 </ul>
 </div>
-<div class="section" id="id2">
-<h3>Contributors<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h3>Contributors<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Matthias Feurer</li>
 <li>Katharina Eggensperger</li>
@@ -197,8 +224,8 @@ the pyninsher.</li>
 <div class="section" id="version-0-1-x">
 <h2>Version 0.1.x<a class="headerlink" href="#version-0-1-x" title="Permalink to this headline">¶</a></h2>
 <p>There are no release notes for auto-sklearn prior to version 0.2.0.</p>
-<div class="section" id="id3">
-<h3>Contributors<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id5">
+<h3>Contributors<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Matthias Feurer</li>
 <li>Katharina Eggensperger</li>

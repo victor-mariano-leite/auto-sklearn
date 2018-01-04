@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Installation &#8212; AutoSklearn 0.2.1 documentation</title>
+    <title>Installation &#8212; AutoSklearn 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.1',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -64,7 +64,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           auto-sklearn</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -139,7 +139,7 @@
 <p>auto-sklearn has the following system requirements:</p>
 <ul class="simple">
 <li>Linux operating system (for example Ubuntu),</li>
-<li>Python (&gt;=3.4).</li>
+<li>Python (&gt;=3.5).</li>
 <li>C++ compiler (with C++11 supports) and SWIG (version 3.0 or later)</li>
 </ul>
 <p>For an explanation of missing Microsoft Windows and MAC OSX support please
@@ -176,7 +176,7 @@ incompability of the compiler version used to compile the Python binary
 shipped by AnaConda and the compiler installed by the distribution. This can
 be solved by installing the <em>gcc</em> compiler shipped with AnaConda (as well as
 <em>swig</em>):</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">gcc</span> <span class="n">swig</span>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="n">gxx_linux</span><span class="o">-</span><span class="mi">64</span> <span class="n">gcc_linux</span><span class="o">-</span><span class="mi">64</span> <span class="n">swig</span>
 </pre></div>
 </div>
 </div>
@@ -197,7 +197,7 @@ and not available on a Windows machine. Therefore, it is not possible to run
 </div>
 <div class="section" id="mac-osx">
 <h3>Mac OSX<a class="headerlink" href="#mac-osx" title="Permalink to this headline">¶</a></h3>
-<p>Auto-sklearn is known to work on OSX systems. Nevertheless, there are two
+<p>We currently do not know if <em>auto-sklearn</em> works on OSX. There are at least two
 issues holding us back from actively supporting OSX:</p>
 <ul class="simple">
 <li>The <code class="docutils literal"><span class="pre">resource</span></code> module cannot enforce a memory limit on a Python process
@@ -207,7 +207,11 @@ minutes to spawn. This makes it impossible for us to run unit tests for
 <em>auto-sklearn</em> and its dependencies <a class="reference external" href="https://github.com/automl/SMAC3">SMAC3</a>
 and <a class="reference external" href="https://github.com/automl/ConfigSpace">ConfigSpace</a>.</li>
 </ul>
-<p>Possible solutions (not tested):</p>
+<p>In case you&#8217;re having issues installing the
+<a class="reference external" href="https://github.com/automl/random_forest_run">pyrfr package</a>, check out this
+<a href="#id2"><span class="problematic" id="id3">`installation suggestion on github&lt;https://github.com/automl/auto-sklearn/issues/360#issuecomment-335150470&gt;`_</span></a>
+.</p>
+<p>Possible other solutions (not tested):</p>
 <ul class="simple">
 <li>virtual machine</li>
 <li>docker image</li>

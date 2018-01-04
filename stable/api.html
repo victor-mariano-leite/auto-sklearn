@@ -5,7 +5,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>APIs &#8212; AutoSklearn 0.2.1 documentation</title>
+    <title>APIs &#8212; AutoSklearn 0.3.0 documentation</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -13,7 +13,7 @@
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.2.1',
+        VERSION:     '0.3.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -64,7 +64,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           auto-sklearn</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.2.1</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.3.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -122,8 +122,8 @@
 </li>
 <li><a class="reference internal" href="#metrics">Metrics</a><ul>
 <li><a class="reference internal" href="#built-in-metrics">Built-in Metrics</a><ul>
-<li><a class="reference internal" href="#id2">Classification</a></li>
-<li><a class="reference internal" href="#id3">Regression</a></li>
+<li><a class="reference internal" href="#id4">Classification</a></li>
+<li><a class="reference internal" href="#id5">Regression</a></li>
 </ul>
 </li>
 </ul>
@@ -145,7 +145,7 @@
 <h3>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="autosklearn.classification.AutoSklearnClassifier">
-<em class="property">class </em><code class="descclassname">autosklearn.classification.</code><code class="descname">AutoSklearnClassifier</code><span class="sig-paren">(</span><em>time_left_for_this_task=3600</em>, <em>per_run_time_limit=360</em>, <em>initial_configurations_via_metalearning=25</em>, <em>ensemble_size=50</em>, <em>ensemble_nbest=50</em>, <em>seed=1</em>, <em>ml_memory_limit=3072</em>, <em>include_estimators=None</em>, <em>exclude_estimators=None</em>, <em>include_preprocessors=None</em>, <em>exclude_preprocessors=None</em>, <em>resampling_strategy='holdout'</em>, <em>resampling_strategy_arguments=None</em>, <em>tmp_folder=None</em>, <em>output_folder=None</em>, <em>delete_tmp_folder_after_terminate=True</em>, <em>delete_output_folder_after_terminate=True</em>, <em>shared_mode=False</em>, <em>disable_evaluator_output=False</em>, <em>configuration_mode='SMAC'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnClassifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">autosklearn.classification.</code><code class="descname">AutoSklearnClassifier</code><span class="sig-paren">(</span><em>time_left_for_this_task=3600</em>, <em>per_run_time_limit=360</em>, <em>initial_configurations_via_metalearning=25</em>, <em>ensemble_size=50</em>, <em>ensemble_nbest=50</em>, <em>seed=1</em>, <em>ml_memory_limit=3072</em>, <em>include_estimators=None</em>, <em>exclude_estimators=None</em>, <em>include_preprocessors=None</em>, <em>exclude_preprocessors=None</em>, <em>resampling_strategy='holdout'</em>, <em>resampling_strategy_arguments=None</em>, <em>tmp_folder=None</em>, <em>output_folder=None</em>, <em>delete_tmp_folder_after_terminate=True</em>, <em>delete_output_folder_after_terminate=True</em>, <em>shared_mode=False</em>, <em>disable_evaluator_output=False</em>, <em>get_smac_object_callback=None</em>, <em>smac_scenario_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnClassifier"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class implements the classification task.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -185,6 +185,9 @@ ensemble. Implements <cite>Model Library Pruning</cite> from <cite>Getting the
 most out of ensemble selection</cite>.</p>
 </div></blockquote>
 <p><strong>seed</strong> : int, optional (default=1)</p>
+<blockquote>
+<div><p>Used to seed SMAC. Will determine the output file names.</p>
+</div></blockquote>
 <p><strong>ml_memory_limit</strong> : int, optional (3072)</p>
 <blockquote>
 <div><p>Memory limit in MB for the machine learning algorithm.
@@ -272,17 +275,20 @@ an ensemble.</li>
 <li><code class="docutils literal"><span class="pre">'model'</span></code> : do not save any model files</li>
 </ul>
 </div></blockquote>
-<p><strong>configuration_mode</strong> : <code class="docutils literal"><span class="pre">SMAC</span></code> or <code class="docutils literal"><span class="pre">ROAR</span></code></p>
+<p><strong>smac_scenario_args</strong> : dict, optional (None)</p>
+<blockquote>
+<div><p>Additional arguments inserted into the scenario of SMAC. See the
+<a class="reference external" href="https://automl.github.io/SMAC3/stable/options.html?highlight=scenario#scenario">SMAC documentation</a>
+for a list of available arguments.</p>
+</div></blockquote>
+<p><strong>get_smac_object_callback</strong> : callable</p>
 <blockquote class="last">
-<div><p>Defines the configuration mode as described in the paper
-<a class="reference external" href="http://aad.informatik.uni-freiburg.de/papers/11-LION5-SMAC.pdf">Sequential Model-Based Optimization for General Algorithm
-Configuration</a>:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">SMAC</span></code> (default): Sequential Model-based Algorithm
-Configuration, which is a Bayesian optimization algorithm</li>
-<li><code class="docutils literal"><span class="pre">ROAR</span></code>: Random Online Aggressive Racing, which is basically
-random search</li>
-</ul>
+<div><p>Callback function to create an object of class
+<a class="reference external" href="https://automl.github.io/SMAC3/stable/apidoc/smac.optimizer.smbo.html">smac.optimizer.smbo.SMBO</a>.
+The function must accept the arguments <code class="docutils literal"><span class="pre">scenario_dict</span></code>, 
+<code class="docutils literal"><span class="pre">instances</span></code>, <code class="docutils literal"><span class="pre">num_params</span></code>, <code class="docutils literal"><span class="pre">runhistory</span></code>, <code class="docutils literal"><span class="pre">seed</span></code> and <code class="docutils literal"><span class="pre">ta</span></code>.
+This is an advanced feature. Use only if you are familiar with
+<a class="reference external" href="https://automl.github.io/SMAC3/stable/index.html">SMAC</a>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -304,6 +310,8 @@ random search</li>
 <dt id="autosklearn.classification.AutoSklearnClassifier.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnClassifier.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit <em>auto-sklearn</em> to given training set (X, y).</p>
+<p>Fit both optimizes the machine learning models and builds an ensemble
+out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==1</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -350,6 +358,8 @@ md5 hash of the dataset.</p>
 <dd><p>Fit an ensemble to models trained during an optimization process.</p>
 <p>All parameters are <code class="docutils literal"><span class="pre">None</span></code> by default. If no other value is given,
 the default values which were set in a call to <code class="docutils literal"><span class="pre">fit()</span></code> are used.</p>
+<p>Calling this function is only necessary if <code class="docutils literal"><span class="pre">ensemble_size==0</span></code>, for
+example when executing <em>auto-sklearn</em> in parallel.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -549,7 +559,7 @@ component of a nested object.</p>
 <h3>Regression<a class="headerlink" href="#regression" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
 <dt id="autosklearn.regression.AutoSklearnRegressor">
-<em class="property">class </em><code class="descclassname">autosklearn.regression.</code><code class="descname">AutoSklearnRegressor</code><span class="sig-paren">(</span><em>time_left_for_this_task=3600</em>, <em>per_run_time_limit=360</em>, <em>initial_configurations_via_metalearning=25</em>, <em>ensemble_size=50</em>, <em>ensemble_nbest=50</em>, <em>seed=1</em>, <em>ml_memory_limit=3072</em>, <em>include_estimators=None</em>, <em>exclude_estimators=None</em>, <em>include_preprocessors=None</em>, <em>exclude_preprocessors=None</em>, <em>resampling_strategy='holdout'</em>, <em>resampling_strategy_arguments=None</em>, <em>tmp_folder=None</em>, <em>output_folder=None</em>, <em>delete_tmp_folder_after_terminate=True</em>, <em>delete_output_folder_after_terminate=True</em>, <em>shared_mode=False</em>, <em>disable_evaluator_output=False</em>, <em>configuration_mode='SMAC'</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnRegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">autosklearn.regression.</code><code class="descname">AutoSklearnRegressor</code><span class="sig-paren">(</span><em>time_left_for_this_task=3600</em>, <em>per_run_time_limit=360</em>, <em>initial_configurations_via_metalearning=25</em>, <em>ensemble_size=50</em>, <em>ensemble_nbest=50</em>, <em>seed=1</em>, <em>ml_memory_limit=3072</em>, <em>include_estimators=None</em>, <em>exclude_estimators=None</em>, <em>include_preprocessors=None</em>, <em>exclude_preprocessors=None</em>, <em>resampling_strategy='holdout'</em>, <em>resampling_strategy_arguments=None</em>, <em>tmp_folder=None</em>, <em>output_folder=None</em>, <em>delete_tmp_folder_after_terminate=True</em>, <em>delete_output_folder_after_terminate=True</em>, <em>shared_mode=False</em>, <em>disable_evaluator_output=False</em>, <em>get_smac_object_callback=None</em>, <em>smac_scenario_args=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnRegressor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor" title="Permalink to this definition">¶</a></dt>
 <dd><p>This class implements the regression task.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -589,6 +599,9 @@ ensemble. Implements <cite>Model Library Pruning</cite> from <cite>Getting the
 most out of ensemble selection</cite>.</p>
 </div></blockquote>
 <p><strong>seed</strong> : int, optional (default=1)</p>
+<blockquote>
+<div><p>Used to seed SMAC. Will determine the output file names.</p>
+</div></blockquote>
 <p><strong>ml_memory_limit</strong> : int, optional (3072)</p>
 <blockquote>
 <div><p>Memory limit in MB for the machine learning algorithm.
@@ -676,17 +689,20 @@ an ensemble.</li>
 <li><code class="docutils literal"><span class="pre">'model'</span></code> : do not save any model files</li>
 </ul>
 </div></blockquote>
-<p><strong>configuration_mode</strong> : <code class="docutils literal"><span class="pre">SMAC</span></code> or <code class="docutils literal"><span class="pre">ROAR</span></code></p>
+<p><strong>smac_scenario_args</strong> : dict, optional (None)</p>
+<blockquote>
+<div><p>Additional arguments inserted into the scenario of SMAC. See the
+<a class="reference external" href="https://automl.github.io/SMAC3/stable/options.html?highlight=scenario#scenario">SMAC documentation</a>
+for a list of available arguments.</p>
+</div></blockquote>
+<p><strong>get_smac_object_callback</strong> : callable</p>
 <blockquote class="last">
-<div><p>Defines the configuration mode as described in the paper
-<a class="reference external" href="http://aad.informatik.uni-freiburg.de/papers/11-LION5-SMAC.pdf">Sequential Model-Based Optimization for General Algorithm
-Configuration</a>:</p>
-<ul class="simple">
-<li><code class="docutils literal"><span class="pre">SMAC</span></code> (default): Sequential Model-based Algorithm
-Configuration, which is a Bayesian optimization algorithm</li>
-<li><code class="docutils literal"><span class="pre">ROAR</span></code>: Random Online Aggressive Racing, which is basically
-random search</li>
-</ul>
+<div><p>Callback function to create an object of class
+<a class="reference external" href="https://automl.github.io/SMAC3/stable/apidoc/smac.optimizer.smbo.html">smac.optimizer.smbo.SMBO</a>.
+The function must accept the arguments <code class="docutils literal"><span class="pre">scenario_dict</span></code>, 
+<code class="docutils literal"><span class="pre">instances</span></code>, <code class="docutils literal"><span class="pre">num_params</span></code>, <code class="docutils literal"><span class="pre">runhistory</span></code>, <code class="docutils literal"><span class="pre">seed</span></code> and <code class="docutils literal"><span class="pre">ta</span></code>.
+This is an advanced feature. Use only if you are familiar with
+<a class="reference external" href="https://automl.github.io/SMAC3/stable/index.html">SMAC</a>.</p>
 </div></blockquote>
 </td>
 </tr>
@@ -707,7 +723,9 @@ random search</li>
 <dl class="method">
 <dt id="autosklearn.regression.AutoSklearnRegressor.fit">
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnRegressor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor.fit" title="Permalink to this definition">¶</a></dt>
-<dd><p>Fit <em>autosklearn</em> to given training set (X, y).</p>
+<dd><p>Fit <em>Auto-sklearn</em> to given training set (X, y).</p>
+<p>Fit both optimizes the machine learning models and builds an ensemble
+out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==1</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -752,6 +770,8 @@ md5 hash of the dataset.</p>
 <dd><p>Fit an ensemble to models trained during an optimization process.</p>
 <p>All parameters are <code class="docutils literal"><span class="pre">None</span></code> by default. If no other value is given,
 the default values which were set in a call to <code class="docutils literal"><span class="pre">fit()</span></code> are used.</p>
+<p>Calling this function is only necessary if <code class="docutils literal"><span class="pre">ensemble_size==0</span></code>, for
+example when executing <em>auto-sklearn</em> in parallel.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -978,8 +998,8 @@ This only works for binary classification.</p>
 
 <div class="section" id="built-in-metrics">
 <h3>Built-in Metrics<a class="headerlink" href="#built-in-metrics" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id2">
-<h4>Classification<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id4">
+<h4>Classification<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
 <dl class="attribute">
 <dt id="autosklearn.metrics.accuracy">
 <code class="descclassname">autosklearn.metrics.</code><code class="descname">accuracy</code><a class="headerlink" href="#autosklearn.metrics.accuracy" title="Permalink to this definition">¶</a></dt>
@@ -1086,8 +1106,8 @@ This only works for binary classification.</p>
 <dd></dd></dl>
 
 </div>
-<div class="section" id="id3">
-<h4>Regression<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id5">
+<h4>Regression<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
 <dl class="attribute">
 <dt id="autosklearn.metrics.r2">
 <code class="descclassname">autosklearn.metrics.</code><code class="descname">r2</code><a class="headerlink" href="#autosklearn.metrics.r2" title="Permalink to this definition">¶</a></dt>
