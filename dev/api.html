@@ -308,7 +308,7 @@ This is an advanced feature. Use only if you are familiar with
 </table>
 <dl class="method">
 <dt id="autosklearn.classification.AutoSklearnClassifier.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnClassifier.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>X_test=None</em>, <em>y_test=None</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnClassifier.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit <em>auto-sklearn</em> to given training set (X, y).</p>
 <p>Fit both optimizes the machine learning models and builds an ensemble
 out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==1</span></code>.</p>
@@ -323,6 +323,18 @@ out of them. To disable ensembling, set <code class="docutils literal"><span cla
 <p><strong>y</strong> : array-like, shape = [n_samples] or [n_samples, n_outputs]</p>
 <blockquote>
 <div><p>The target classes.</p>
+</div></blockquote>
+<p><strong>X_test</strong> : array-like or sparse matrix of shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Test data input samples. Will be used to save test predictions for
+all models. This allows to evaluate the performance of Auto-sklearn
+over time.</p>
+</div></blockquote>
+<p><strong>y_test</strong> : array-like, shape = [n_samples] or [n_samples, n_outputs]</p>
+<blockquote>
+<div><p>Test data target classes. Will be used to calculate the test error
+of all models. This allows to evaluate the performance of
+Auto-sklearn over time.</p>
 </div></blockquote>
 <p><strong>metric</strong> : callable, optional (default=&#8217;autosklearn.metrics.accuracy&#8217;)</p>
 <blockquote>
@@ -722,7 +734,7 @@ This is an advanced feature. Use only if you are familiar with
 </table>
 <dl class="method">
 <dt id="autosklearn.regression.AutoSklearnRegressor.fit">
-<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnRegressor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor.fit" title="Permalink to this definition">¶</a></dt>
+<code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>X_test=None</em>, <em>y_test=None</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnRegressor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit <em>Auto-sklearn</em> to given training set (X, y).</p>
 <p>Fit both optimizes the machine learning models and builds an ensemble
 out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==1</span></code>.</p>
@@ -734,9 +746,21 @@ out of them. To disable ensembling, set <code class="docutils literal"><span cla
 <blockquote>
 <div><p>The training input samples.</p>
 </div></blockquote>
-<p><strong>y</strong> : array-like, shape = [n_samples] or [n_samples, n_outputs]</p>
+<p><strong>y</strong> : array-like, shape = [n_samples]</p>
 <blockquote>
 <div><p>The regression target.</p>
+</div></blockquote>
+<p><strong>X_test</strong> : array-like or sparse matrix of shape = [n_samples, n_features]</p>
+<blockquote>
+<div><p>Test data input samples. Will be used to save test predictions for
+all models. This allows to evaluate the performance of Auto-sklearn
+over time.</p>
+</div></blockquote>
+<p><strong>y_test</strong> : array-like, shape = [n_samples]</p>
+<blockquote>
+<div><p>The regression target. Will be used to calculate the test error
+of all models. This allows to evaluate the performance of
+Auto-sklearn over time.</p>
 </div></blockquote>
 <p><strong>metric</strong> : callable, optional (default=&#8217;autosklearn.metrics.r2&#8217;)</p>
 <blockquote>
