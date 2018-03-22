@@ -218,12 +218,19 @@
 <span class="sd">              &#39;folds&#39;</span>
 
 <span class="sd">        resampling_strategy_arguments : dict, optional if &#39;holdout&#39; (train_size default=0.67)</span>
-<span class="sd">            Additional arguments for resampling_strategy</span>
-<span class="sd">            ``train_size`` should be between 0.0 and 1.0 and represent the</span>
-<span class="sd">            proportion of the dataset to include in the train split.</span>
+<span class="sd">            Additional arguments for resampling_strategy:</span>
+
+<span class="sd">            * ``train_size`` should be between 0.0 and 1.0 and represent the</span>
+<span class="sd">              proportion of the dataset to include in the train split.</span>
+<span class="sd">            * ``shuffle`` determines whether the data is shuffled prior to</span>
+<span class="sd">              splitting it into train and validation.</span>
+
+<span class="sd">            Available arguments:</span>
+
 <span class="sd">            * &#39;holdout&#39;: {&#39;train_size&#39;: float, &#39;shuffle&#39;: bool}</span>
 <span class="sd">            * &#39;holdout-iterative-fit&#39;:  {&#39;train_size&#39;: float, &#39;shuffle&#39;: bool}</span>
 <span class="sd">            * &#39;cv&#39;: {&#39;folds&#39;: int, &#39;shuffle&#39;: bool}</span>
+<span class="sd">            * &#39;partial-cv&#39;: {&#39;folds&#39;: int, &#39;shuffle&#39;: bool}</span>
 
 <span class="sd">        tmp_folder : string, optional (None)</span>
 <span class="sd">            folder to store configuration output and log files, if ``None``</span>

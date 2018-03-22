@@ -230,12 +230,20 @@ fit where possible</li>
 </div></blockquote>
 <p><strong>resampling_strategy_arguments</strong> : dict, optional if &#8216;holdout&#8217; (train_size default=0.67)</p>
 <blockquote>
-<div><p>Additional arguments for resampling_strategy
-<code class="docutils literal"><span class="pre">train_size</span></code> should be between 0.0 and 1.0 and represent the
-proportion of the dataset to include in the train split.
-* &#8216;holdout&#8217;: {&#8216;train_size&#8217;: float, &#8216;shuffle&#8217;: bool}
-* &#8216;holdout-iterative-fit&#8217;:  {&#8216;train_size&#8217;: float, &#8216;shuffle&#8217;: bool}
-* &#8216;cv&#8217;: {&#8216;folds&#8217;: int, &#8216;shuffle&#8217;: bool}</p>
+<div><p>Additional arguments for resampling_strategy:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">train_size</span></code> should be between 0.0 and 1.0 and represent the
+proportion of the dataset to include in the train split.</li>
+<li><code class="docutils literal"><span class="pre">shuffle</span></code> determines whether the data is shuffled prior to
+splitting it into train and validation.</li>
+</ul>
+<p>Available arguments:</p>
+<ul class="simple">
+<li>&#8216;holdout&#8217;: {&#8216;train_size&#8217;: float, &#8216;shuffle&#8217;: bool}</li>
+<li>&#8216;holdout-iterative-fit&#8217;:  {&#8216;train_size&#8217;: float, &#8216;shuffle&#8217;: bool}</li>
+<li>&#8216;cv&#8217;: {&#8216;folds&#8217;: int, &#8216;shuffle&#8217;: bool}</li>
+<li>&#8216;partial-cv&#8217;: {&#8216;folds&#8217;: int, &#8216;shuffle&#8217;: bool}</li>
+</ul>
 </div></blockquote>
 <p><strong>tmp_folder</strong> : string, optional (None)</p>
 <blockquote>
@@ -659,12 +667,20 @@ fit where possible</li>
 </div></blockquote>
 <p><strong>resampling_strategy_arguments</strong> : dict, optional if &#8216;holdout&#8217; (train_size default=0.67)</p>
 <blockquote>
-<div><p>Additional arguments for resampling_strategy
-<code class="docutils literal"><span class="pre">train_size</span></code> should be between 0.0 and 1.0 and represent the
-proportion of the dataset to include in the train split.
-* &#8216;holdout&#8217;: {&#8216;train_size&#8217;: float, &#8216;shuffle&#8217;: bool}
-* &#8216;holdout-iterative-fit&#8217;:  {&#8216;train_size&#8217;: float, &#8216;shuffle&#8217;: bool}
-* &#8216;cv&#8217;: {&#8216;folds&#8217;: int, &#8216;shuffle&#8217;: bool}</p>
+<div><p>Additional arguments for resampling_strategy:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">train_size</span></code> should be between 0.0 and 1.0 and represent the
+proportion of the dataset to include in the train split.</li>
+<li><code class="docutils literal"><span class="pre">shuffle</span></code> determines whether the data is shuffled prior to
+splitting it into train and validation.</li>
+</ul>
+<p>Available arguments:</p>
+<ul class="simple">
+<li>&#8216;holdout&#8217;: {&#8216;train_size&#8217;: float, &#8216;shuffle&#8217;: bool}</li>
+<li>&#8216;holdout-iterative-fit&#8217;:  {&#8216;train_size&#8217;: float, &#8216;shuffle&#8217;: bool}</li>
+<li>&#8216;cv&#8217;: {&#8216;folds&#8217;: int, &#8216;shuffle&#8217;: bool}</li>
+<li>&#8216;partial-cv&#8217;: {&#8216;folds&#8217;: int, &#8216;shuffle&#8217;: bool}</li>
+</ul>
 </div></blockquote>
 <p><strong>tmp_folder</strong> : string, optional (None)</p>
 <blockquote>
