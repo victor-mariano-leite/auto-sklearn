@@ -575,6 +575,30 @@ component of a nested object.</p>
 </table>
 </dd></dl>
 
+<dl class="method">
+<dt id="autosklearn.classification.AutoSklearnClassifier.sprint_statistics">
+<code class="descname">sprint_statistics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier.sprint_statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the following statistics of the training result:</p>
+<ul class="simple">
+<li>dataset name</li>
+<li>metric used</li>
+<li>best validation score</li>
+<li>number of target algorithm runs</li>
+<li>number of successful target algorithm runs</li>
+<li>number of crashed target algorithm runs</li>
+<li>number of target algorithm runs that exceeded the memory limit</li>
+<li>number of target algorithm runs that exceeded the time limit</li>
+</ul>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </dd></dl>
 
 </div>
@@ -979,6 +1003,30 @@ component of a nested object.</p>
 <dt id="autosklearn.regression.AutoSklearnRegressor.show_models">
 <code class="descname">show_models</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor.show_models" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return a representation of the final ensemble found by auto-sklearn.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="autosklearn.regression.AutoSklearnRegressor.sprint_statistics">
+<code class="descname">sprint_statistics</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor.sprint_statistics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the following statistics of the training result:</p>
+<ul class="simple">
+<li>dataset name</li>
+<li>metric used</li>
+<li>best validation score</li>
+<li>number of target algorithm runs</li>
+<li>number of successful target algorithm runs</li>
+<li>number of crashed target algorithm runs</li>
+<li>number of target algorithm runs that exceeded the memory limit</li>
+<li>number of target algorithm runs that exceeded the time limit</li>
+</ul>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

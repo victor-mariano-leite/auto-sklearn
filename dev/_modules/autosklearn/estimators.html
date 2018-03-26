@@ -479,6 +479,21 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_automl</span><span class="o">.</span><span class="n">fANOVA_input_</span>
 
     <span class="k">def</span> <span class="nf">sprint_statistics</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return the following statistics of the training result:</span>
+
+<span class="sd">        - dataset name</span>
+<span class="sd">        - metric used</span>
+<span class="sd">        - best validation score</span>
+<span class="sd">        - number of target algorithm runs</span>
+<span class="sd">        - number of successful target algorithm runs</span>
+<span class="sd">        - number of crashed target algorithm runs</span>
+<span class="sd">        - number of target algorithm runs that exceeded the memory limit</span>
+<span class="sd">        - number of target algorithm runs that exceeded the time limit</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        str</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_automl</span><span class="o">.</span><span class="n">sprint_statistics</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">_get_automl_class</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
