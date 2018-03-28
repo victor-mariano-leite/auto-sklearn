@@ -206,9 +206,8 @@
 <span class="sd">            of preprocessors not to use. Incompatible with</span>
 <span class="sd">            include_preprocessors.</span>
 
-<span class="sd">        resampling_strategy : string, optional (&#39;holdout&#39;)</span>
-<span class="sd">            how to to avoid overfitting, might need</span>
-<span class="sd">            &#39;resampling_strategy_arguments&#39;</span>
+<span class="sd">        resampling_strategy : string or object, optional (&#39;holdout&#39;)</span>
+<span class="sd">            how to to handle overfitting, might need &#39;resampling_strategy_arguments&#39;</span>
 
 <span class="sd">            * &#39;holdout&#39;: 67:33 (train:test) split</span>
 <span class="sd">            * &#39;holdout-iterative-fit&#39;:  67:33 (train:test) split, calls iterative</span>
@@ -216,6 +215,12 @@
 <span class="sd">            * &#39;cv&#39;: crossvalidation, requires &#39;folds&#39;</span>
 <span class="sd">            * &#39;partial-cv&#39;: crossvalidation with intensification, requires</span>
 <span class="sd">              &#39;folds&#39;</span>
+<span class="sd">            * BaseCrossValidator object: any BaseCrossValidator class found</span>
+<span class="sd">                                        in scikit-learn model_selection module</span>
+<span class="sd">            * _RepeatedSplits object: any _RepeatedSplits class found</span>
+<span class="sd">                                      in scikit-learn model_selection module</span>
+<span class="sd">            * BaseShuffleSplit object: any BaseShuffleSplit class found</span>
+<span class="sd">                                      in scikit-learn model_selection module</span>
 
 <span class="sd">        resampling_strategy_arguments : dict, optional if &#39;holdout&#39; (train_size default=0.67)</span>
 <span class="sd">            Additional arguments for resampling_strategy:</span>
@@ -227,10 +232,15 @@
 
 <span class="sd">            Available arguments:</span>
 
-<span class="sd">            * &#39;holdout&#39;: {&#39;train_size&#39;: float, &#39;shuffle&#39;: bool}</span>
-<span class="sd">            * &#39;holdout-iterative-fit&#39;:  {&#39;train_size&#39;: float, &#39;shuffle&#39;: bool}</span>
-<span class="sd">            * &#39;cv&#39;: {&#39;folds&#39;: int, &#39;shuffle&#39;: bool}</span>
+<span class="sd">            * &#39;holdout&#39;: {&#39;train_size&#39;: float}</span>
+<span class="sd">            * &#39;holdout-iterative-fit&#39;:  {&#39;train_size&#39;: float}</span>
+<span class="sd">            * &#39;cv&#39;: {&#39;folds&#39;: int}</span>
 <span class="sd">            * &#39;partial-cv&#39;: {&#39;folds&#39;: int, &#39;shuffle&#39;: bool}</span>
+<span class="sd">            * BaseCrossValidator or _RepeatedSplits or BaseShuffleSplit object: all arguments</span>
+<span class="sd">                required by chosen class as specified in scikit-learn documentation.</span>
+<span class="sd">                If arguments are not provided, scikit-learn defaults are used.</span>
+<span class="sd">                If no defaults are available, an exception is raised.</span>
+<span class="sd">                Refer to the &#39;n_splits&#39; argument as &#39;folds&#39;.</span>
 
 <span class="sd">        tmp_folder : string, optional (None)</span>
 <span class="sd">            folder to store configuration output and log files, if ``None``</span>
