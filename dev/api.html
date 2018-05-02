@@ -9,6 +9,7 @@
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -74,6 +75,7 @@
                 <li><a href="releases.html">Releases</a></li>
                 <li><a href="installation.html">Installation</a></li>
                 <li><a href="manual.html">Manual</a></li>
+                <li><a href="examples/index.html">Examples</a></li>
                 <li><a href="#">API</a></li>
                 <li><a href="extending.html">Extending</a></li>
             
@@ -322,7 +324,7 @@ imported into a pandas <code class="docutils literal"><span class="pre">DataFram
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>X_test=None</em>, <em>y_test=None</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnClassifier.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.classification.AutoSklearnClassifier.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit <em>auto-sklearn</em> to given training set (X, y).</p>
 <p>Fit both optimizes the machine learning models and builds an ensemble
-out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==1</span></code>.</p>
+out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==0</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -808,7 +810,7 @@ imported into a pandas <code class="docutils literal"><span class="pre">DataFram
 <code class="descname">fit</code><span class="sig-paren">(</span><em>X</em>, <em>y</em>, <em>X_test=None</em>, <em>y_test=None</em>, <em>metric=None</em>, <em>feat_type=None</em>, <em>dataset_name=None</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/estimators.html#AutoSklearnRegressor.fit"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.regression.AutoSklearnRegressor.fit" title="Permalink to this definition">¶</a></dt>
 <dd><p>Fit <em>Auto-sklearn</em> to given training set (X, y).</p>
 <p>Fit both optimizes the machine learning models and builds an ensemble
-out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==1</span></code>.</p>
+out of them. To disable ensembling, set <code class="docutils literal"><span class="pre">ensemble_size==0</span></code>.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1091,7 +1093,7 @@ component of a nested object.</p>
 <h2>Metrics<a class="headerlink" href="#metrics" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="autosklearn.metrics.make_scorer">
-<code class="descclassname">autosklearn.metrics.</code><code class="descname">make_scorer</code><span class="sig-paren">(</span><em>name</em>, <em>score_func</em>, <em>greater_is_better=True</em>, <em>needs_proba=False</em>, <em>needs_threshold=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/metrics.html#make_scorer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.metrics.make_scorer" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">autosklearn.metrics.</code><code class="descname">make_scorer</code><span class="sig-paren">(</span><em>name</em>, <em>score_func</em>, <em>optimum=1</em>, <em>greater_is_better=True</em>, <em>needs_proba=False</em>, <em>needs_threshold=False</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/autosklearn/metrics.html#make_scorer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#autosklearn.metrics.make_scorer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Make a scorer from a performance metric or loss function.</p>
 <p>Factory inspired by scikit-learn which wraps scikit-learn scoring functions
 to be used in auto-sklearn.</p>
@@ -1103,6 +1105,10 @@ to be used in auto-sklearn.</p>
 <dt><strong>score_func</strong> <span class="classifier-delimiter">:</span> <span class="classifier">callable</span></dt>
 <dd><p class="first last">Score function (or loss function) with signature
 <code class="docutils literal"><span class="pre">score_func(y,</span> <span class="pre">y_pred,</span> <span class="pre">**kwargs)</span></code>.</p>
+</dd>
+<dt><strong>optimum</strong> <span class="classifier-delimiter">:</span> <span class="classifier">int or float, default=1</span></dt>
+<dd><p class="first last">The best score achievable by the score function, i.e. maximum in case of
+scorer function and minimum in case of loss function.</p>
 </dd>
 <dt><strong>greater_is_better</strong> <span class="classifier-delimiter">:</span> <span class="classifier">boolean, default=True</span></dt>
 <dd><p class="first last">Whether score_func is a score function (default), meaning high is good,
