@@ -1144,6 +1144,11 @@ This only works for binary classification.</p>
 <h3>Built-in Metrics<a class="headerlink" href="#built-in-metrics" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="id4">
 <h4>Classification<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>Note: The default <code class="docutils literal"><span class="pre">autosklearn.metrics.f1</span></code>, <code class="docutils literal"><span class="pre">autosklearn.metrics.precision</span></code> and <code class="docutils literal"><span class="pre">autosklearn.metrics.recall</span></code>
+built-in metrics are applicable only for binary classification. In order to apply them on multilabel and multiclass
+classification, please use the corresponding metrics with an appropriate averaging mechanism, such as <code class="docutils literal"><span class="pre">autosklearn.metrics.f1_macro</span></code>.
+For more information about how these metrics are used, please read
+<a class="reference external" href="http://scikit-learn.org/stable/modules/model_evaluation.html#precision-recall-and-f-measures">this scikit-learn documentation</a>.</p>
 <dl class="attribute">
 <dt id="autosklearn.metrics.accuracy">
 <code class="descclassname">autosklearn.metrics.</code><code class="descname">accuracy</code><a class="headerlink" href="#autosklearn.metrics.accuracy" title="Permalink to this definition">¶</a></dt>
