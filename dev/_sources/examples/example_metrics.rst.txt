@@ -1,4 +1,8 @@
+.. note::
+    :class: sphx-glr-download-link-note
 
+    Click :ref:`here <sphx_glr_download_examples_example_metrics.py>` to download the full example code
+.. rst-class:: sphx-glr-example-title
 
 .. _sphx_glr_examples_example_metrics.py:
 
@@ -181,10 +185,14 @@ classification problem.
 **Total running time of the script:** ( 0 minutes  0.000 seconds)
 
 
+.. _sphx_glr_download_examples_example_metrics.py:
+
 
 .. only :: html
 
  .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-example
+
 
 
   .. container:: sphx-glr-download

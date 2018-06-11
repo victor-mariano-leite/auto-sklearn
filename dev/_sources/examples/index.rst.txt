@@ -200,6 +200,7 @@ General introductory examples for *auto-sklearn* can be found here.
 .. only :: html
 
  .. container:: sphx-glr-footer
+    :class: sphx-glr-footer-gallery
 
 
   .. container:: sphx-glr-download
