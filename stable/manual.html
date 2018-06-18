@@ -5,15 +5,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Manual &#8212; AutoSklearn 0.3.0 documentation</title>
+    <title>Manual &#8212; AutoSklearn 0.4.0 documentation</title>
     
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/gallery.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
-        VERSION:     '0.3.0',
+        VERSION:     '0.4.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -64,7 +65,7 @@
         </button>
         <a class="navbar-brand" href="index.html">
           auto-sklearn</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.3.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -74,6 +75,7 @@
                 <li><a href="releases.html">Releases</a></li>
                 <li><a href="installation.html">Installation</a></li>
                 <li><a href="#">Manual</a></li>
+                <li><a href="examples/index.html">Examples</a></li>
                 <li><a href="api.html">API</a></li>
                 <li><a href="extending.html">Extending</a></li>
             
@@ -117,11 +119,12 @@
 <li><a class="reference internal" href="#">Manual</a><ul>
 <li><a class="reference internal" href="#examples">Examples</a></li>
 <li><a class="reference internal" href="#time-and-memory-limits">Time and memory limits</a></li>
-<li><a class="reference internal" href="#restricting-the-searchspace">Restricting the Searchspace</a><ul>
+<li><a class="reference internal" href="#restricting-the-searchspace">Restricting the searchspace</a><ul>
 <li><a class="reference internal" href="#turning-off-preprocessing">Turning off preprocessing</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#resampling-strategies">Resampling strategies</a></li>
+<li><a class="reference internal" href="#inspecting-the-results">Inspecting the results</a></li>
 <li><a class="reference internal" href="#parallel-computation">Parallel computation</a></li>
 <li><a class="reference internal" href="#model-persistence">Model persistence</a></li>
 <li><a class="reference internal" href="#vanilla-auto-sklearn">Vanilla auto-sklearn</a></li>
@@ -142,13 +145,15 @@ references the examples where possible or explains certain configurations.</p>
 <p><em>auto-sklearn</em> comes with the following examples which demonstrate several
 aspects of its usage:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/automl/auto-sklearn/blob/master/example/example_holdout.py">Holdout</a></li>
-<li><a class="reference external" href="https://github.com/automl/auto-sklearn/blob/master/example/example_crossvalidation.py">Cross-validation</a></li>
-<li><a class="reference external" href="https://github.com/automl/auto-sklearn/blob/master/example/example_parallel.py">Parallel usage</a></li>
-<li><a class="reference external" href="https://github.com/automl/auto-sklearn/blob/master/example/example_sequential.py">Sequential usage</a></li>
-<li><a class="reference external" href="https://github.com/automl/auto-sklearn/blob/master/example/example_regression.py">Regression</a></li>
-<li><a class="reference external" href="https://github.com/automl/auto-sklearn/blob/master/example/example_feature_types.py">Continuous and Categorical Data</a></li>
-<li><a class="reference external" href="https://github.com/automl/auto-sklearn/blob/master/example/example_metrics.py">Using Custom metrics</a></li>
+<li><a class="reference external" href="examples/example_holdout.html">Holdout</a></li>
+<li><a class="reference external" href="examples/example_crossvalidation.html">Cross-validation</a></li>
+<li><a class="reference external" href="examples/example_parallel.html">Parallel usage</a></li>
+<li><a class="reference external" href="examples/example_sequential.html">Sequential usage</a></li>
+<li><a class="reference external" href="examples/example_regression.html">Regression</a></li>
+<li><a class="reference external" href="examples/example_feature_types.html">Continuous and categorical data</a></li>
+<li><a class="reference external" href="examples/example_metrics.html">Using custom metrics</a></li>
+<li><a class="reference external" href="examples/example_random_search.html">Random search</a></li>
+<li><a class="reference external" href="examples/example_eips.html">EIPS</a></li>
 </ul>
 </div>
 <div class="section" id="time-and-memory-limits">
@@ -169,7 +174,7 @@ time limit of one day, and a time limit of 30 minutes for a single run.</p>
 <a class="reference external" href="https://github.com/automl/auto-sklearn/issues/142">auto-sklearn/issues/142</a>.</p>
 </div>
 <div class="section" id="restricting-the-searchspace">
-<h2>Restricting the Searchspace<a class="headerlink" href="#restricting-the-searchspace" title="Permalink to this headline">¶</a></h2>
+<h2>Restricting the searchspace<a class="headerlink" href="#restricting-the-searchspace" title="Permalink to this headline">¶</a></h2>
 <p>Instead of using all available estimators, it is possible to restrict
 <em>auto-sklearn</em>&#8216;s searchspace. The following shows an example of how to exclude
 all preprocessing methods and restrict the configuration space to only
@@ -206,6 +211,24 @@ This can be turned off by setting
 <div class="section" id="resampling-strategies">
 <h2>Resampling strategies<a class="headerlink" href="#resampling-strategies" title="Permalink to this headline">¶</a></h2>
 <p>Examples for using holdout and cross-validation can be found in <a class="reference external" href="https://github.com/automl/auto-sklearn/tree/master/example">auto-sklearn/examples/</a></p>
+</div>
+<div class="section" id="inspecting-the-results">
+<h2>Inspecting the results<a class="headerlink" href="#inspecting-the-results" title="Permalink to this headline">¶</a></h2>
+<p><em>auto-sklearn</em> allows users to inspect the training results and statistics. The following example shows how different
+statistics can be printed for the inspection.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">autoskleran.classification</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">automl</span> <span class="o">=</span> <span class="n">autosklearn</span><span class="o">.</span><span class="n">classification</span><span class="o">.</span><span class="n">AutoSklearnClassifier</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">automl</span><span class="o">.</span><span class="n">cv_results_</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">automl</span><span class="o">.</span><span class="n">sprint_statistics</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">automl</span><span class="o">.</span><span class="n">show_models</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">cv_results_</span></code> returns a dict with keys as column headers and values as columns, that can be imported into a pandas DataFrame.
+<code class="docutils literal"><span class="pre">sprint_statistics()</span></code> is a method that prints the name of the  dataset, the metric used, and the best validation score
+obtained by running <em>auto-sklearn</em>. It additionally prints the number of both successful and unsuccessful
+algorithm runs.
+The results obtained from the final ensemble can be printed by calling <code class="docutils literal"><span class="pre">show_models()</span></code>.</p>
 </div>
 <div class="section" id="parallel-computation">
 <h2>Parallel computation<a class="headerlink" href="#parallel-computation" title="Permalink to this headline">¶</a></h2>
@@ -267,7 +290,7 @@ regular SMAC algorithm for suggesting new hyperparameter configurations.</p>
       
     </p>
     <p>
-        &copy; Copyright 2014-2017, Matthias Feurer, Aaron Klein, Katharina Eggensperger, Jost Tobias Springenberg, Manuel Blum, Frank Hutter.<br/>
+        &copy; Copyright 2014-2018, Machine Learning Professorship Freiburg.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.<br/>
     </p>
   </div>

@@ -5,15 +5,16 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>autosklearn.metrics &#8212; AutoSklearn 0.3.0 documentation</title>
+    <title>autosklearn.metrics &#8212; AutoSklearn 0.4.0 documentation</title>
     
     <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/gallery.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    '../../',
-        VERSION:     '0.3.0',
+        VERSION:     '0.4.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true,
@@ -64,7 +65,7 @@
         </button>
         <a class="navbar-brand" href="../../index.html">
           auto-sklearn</a>
-        <span class="navbar-text navbar-version pull-left"><b>0.3.0</b></span>
+        <span class="navbar-text navbar-version pull-left"><b>0.4.0</b></span>
       </div>
 
         <div class="collapse navbar-collapse nav-collapse">
@@ -74,6 +75,7 @@
                 <li><a href="../../releases.html">Releases</a></li>
                 <li><a href="../../installation.html">Installation</a></li>
                 <li><a href="../../manual.html">Manual</a></li>
+                <li><a href="../../examples/index.html">Examples</a></li>
                 <li><a href="../../api.html">API</a></li>
                 <li><a href="../../extending.html">Extending</a></li>
             
@@ -132,10 +134,11 @@
 
 
 <span class="k">class</span> <span class="nc">Scorer</span><span class="p">(</span><span class="nb">object</span><span class="p">,</span> <span class="n">metaclass</span><span class="o">=</span><span class="n">ABCMeta</span><span class="p">):</span>
-    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">score_func</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">score_func</span><span class="p">,</span> <span class="n">optimum</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span> <span class="o">=</span> <span class="n">kwargs</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_score_func</span> <span class="o">=</span> <span class="n">score_func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_optimum</span> <span class="o">=</span> <span class="n">optimum</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_sign</span> <span class="o">=</span> <span class="n">sign</span>
 
     <span class="nd">@abstractmethod</span>
@@ -254,8 +257,8 @@
             <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sign</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">_score_func</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_kwargs</span><span class="p">)</span>
 
 
-<div class="viewcode-block" id="make_scorer"><a class="viewcode-back" href="../../api.html#autosklearn.metrics.make_scorer">[docs]</a><span class="k">def</span> <span class="nf">make_scorer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">score_func</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">needs_proba</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-                <span class="n">needs_threshold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<div class="viewcode-block" id="make_scorer"><a class="viewcode-back" href="../../api.html#autosklearn.metrics.make_scorer">[docs]</a><span class="k">def</span> <span class="nf">make_scorer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">score_func</span><span class="p">,</span> <span class="n">optimum</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">needs_proba</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">needs_threshold</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Make a scorer from a performance metric or loss function.</span>
 
 <span class="sd">    Factory inspired by scikit-learn which wraps scikit-learn scoring functions</span>
@@ -266,6 +269,10 @@
 <span class="sd">    score_func : callable</span>
 <span class="sd">        Score function (or loss function) with signature</span>
 <span class="sd">        ``score_func(y, y_pred, **kwargs)``.</span>
+
+<span class="sd">    optimum : int or float, default=1</span>
+<span class="sd">        The best score achievable by the score function, i.e. maximum in case of</span>
+<span class="sd">        scorer function and minimum in case of loss function.</span>
 
 <span class="sd">    greater_is_better : boolean, default=True</span>
 <span class="sd">        Whether score_func is a score function (default), meaning high is good,</span>
@@ -295,41 +302,56 @@
         <span class="bp">cls</span> <span class="o">=</span> <span class="n">_ThresholdScorer</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="bp">cls</span> <span class="o">=</span> <span class="n">_PredictScorer</span>
-    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">score_func</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span></div>
+    <span class="k">return</span> <span class="bp">cls</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">score_func</span><span class="p">,</span> <span class="n">optimum</span><span class="p">,</span> <span class="n">sign</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span></div>
 
 
 <span class="c1"># Standard regression scores</span>
-<span class="n">r2</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">)</span>
+<span class="n">r2</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span>
+                 <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">)</span>
 <span class="n">mean_squared_error</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span>
                                  <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">,</span>
+                                 <span class="n">optimum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                  <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">mean_absolute_error</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;mean_absolute_error&#39;</span><span class="p">,</span>
                                   <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">,</span>
+                                  <span class="n">optimum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                   <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">median_absolute_error</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;median_absolute_error&#39;</span><span class="p">,</span>
                                     <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">median_absolute_error</span><span class="p">,</span>
+                                    <span class="n">optimum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
                                     <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="c1"># Standard Classification Scores</span>
-<span class="n">accuracy</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span>
+                       <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">)</span>
 <span class="n">balanced_accuracy</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;balanced_accuracy&#39;</span><span class="p">,</span>
                                 <span class="n">classification_metrics</span><span class="o">.</span><span class="n">balanced_accuracy</span><span class="p">)</span>
-<span class="n">f1</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">)</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span>
+                 <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">)</span>
 
 <span class="c1"># Score functions that need decision values</span>
-<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">roc_auc_score</span><span class="p">,</span>
-                      <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">needs_threshold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">roc_auc</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+                      <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">roc_auc_score</span><span class="p">,</span>
+                      <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                      <span class="n">needs_threshold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">average_precision</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;average_precision&#39;</span><span class="p">,</span>
                                 <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">average_precision_score</span><span class="p">,</span>
                                 <span class="n">needs_threshold</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">precision</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">)</span>
-<span class="n">recall</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;recall&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">)</span>
+<span class="n">precision</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;precision&#39;</span><span class="p">,</span>
+                        <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">precision_score</span><span class="p">)</span>
+<span class="n">recall</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;recall&#39;</span><span class="p">,</span>
+                     <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">recall_score</span><span class="p">)</span>
 
 <span class="c1"># Score function for probabilistic classification</span>
-<span class="n">log_loss</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;log_loss&#39;</span><span class="p">,</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">log_loss</span><span class="p">,</span>
-                       <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">needs_proba</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">pac_score</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;pac_score&#39;</span><span class="p">,</span> <span class="n">classification_metrics</span><span class="o">.</span><span class="n">pac_score</span><span class="p">,</span>
-                        <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">needs_proba</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">log_loss</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;log_loss&#39;</span><span class="p">,</span>
+                       <span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">log_loss</span><span class="p">,</span>
+                       <span class="n">optimum</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+                       <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                       <span class="n">needs_proba</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pac_score</span> <span class="o">=</span> <span class="n">make_scorer</span><span class="p">(</span><span class="s1">&#39;pac_score&#39;</span><span class="p">,</span>
+                        <span class="n">classification_metrics</span><span class="o">.</span><span class="n">pac_score</span><span class="p">,</span>
+                        <span class="n">greater_is_better</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                        <span class="n">needs_proba</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1"># TODO what about mathews correlation coefficient etc?</span>
 
 
@@ -425,7 +447,7 @@
       
     </p>
     <p>
-        &copy; Copyright 2014-2017, Matthias Feurer, Aaron Klein, Katharina Eggensperger, Jost Tobias Springenberg, Manuel Blum, Frank Hutter.<br/>
+        &copy; Copyright 2014-2018, Machine Learning Professorship Freiburg.<br/>
       Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.5.5.<br/>
     </p>
   </div>
