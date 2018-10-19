@@ -151,7 +151,9 @@
                  <span class="n">shared_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">disable_evaluator_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                  <span class="n">get_smac_object_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-                 <span class="n">smac_scenario_args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+                 <span class="n">smac_scenario_args</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="n">logging_config</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                 <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Parameters</span>
 <span class="sd">        ----------</span>
@@ -291,6 +293,11 @@
 <span class="sd">            This is an advanced feature. Use only if you are familiar with</span>
 <span class="sd">            `SMAC &lt;https://automl.github.io/SMAC3/stable/index.html&gt;`_.</span>
 
+<span class="sd">        logging_config : dict, optional (None)</span>
+<span class="sd">            dictionary object specifying the logger configuration. If None,</span>
+<span class="sd">            the default logging.yaml file is used, which can be found in</span>
+<span class="sd">            the directory ``util/logging.yaml`` relative to the installation.</span>
+
 <span class="sd">        Attributes</span>
 <span class="sd">        ----------</span>
 
@@ -322,6 +329,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">disable_evaluator_output</span> <span class="o">=</span> <span class="n">disable_evaluator_output</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">get_smac_object_callback</span> <span class="o">=</span> <span class="n">get_smac_object_callback</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">smac_scenario_args</span> <span class="o">=</span> <span class="n">smac_scenario_args</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">logging_config</span> <span class="o">=</span> <span class="n">logging_config</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_automl</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -361,7 +369,8 @@
             <span class="n">shared_mode</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">shared_mode</span><span class="p">,</span>
             <span class="n">get_smac_object_callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_smac_object_callback</span><span class="p">,</span>
             <span class="n">disable_evaluator_output</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">disable_evaluator_output</span><span class="p">,</span>
-            <span class="n">smac_scenario_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">smac_scenario_args</span>
+            <span class="n">smac_scenario_args</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">smac_scenario_args</span><span class="p">,</span>
+            <span class="n">logging_config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">logging_config</span><span class="p">,</span>
         <span class="p">)</span>
 
         <span class="k">return</span> <span class="n">automl</span>

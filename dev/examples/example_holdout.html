@@ -142,7 +142,7 @@ holdout method as well as set the train-test split ratio when instantiating
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_digits</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">load_breast_cancer</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
     <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> \
         <span class="n">sklearn</span><span class="o">.</span><span class="n">model_selection</span><span class="o">.</span><span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
@@ -158,7 +158,7 @@ holdout method as well as set the train-test split ratio when instantiating
         <span class="n">resampling_strategy</span><span class="o">=</span><span class="s1">&#39;holdout&#39;</span><span class="p">,</span>
         <span class="n">resampling_strategy_arguments</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;train_size&#39;</span><span class="p">:</span> <span class="mf">0.67</span><span class="p">}</span>
     <span class="p">)</span>
-    <span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s1">&#39;digits&#39;</span><span class="p">)</span>
+    <span class="n">automl</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s1">&#39;breast_cancer&#39;</span><span class="p">)</span>
 
     <span class="c1"># Print the final ensemble constructed by auto-sklearn.</span>
     <span class="k">print</span><span class="p">(</span><span class="n">automl</span><span class="o">.</span><span class="n">show_models</span><span class="p">())</span>
