@@ -154,6 +154,46 @@ General introductory examples for *auto-sklearn* can be found here.
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="The following example demonstrates how to create a wrapper around the linear discriminant analy...">
+
+.. only:: html
+
+    .. figure:: /examples/images/thumb/sphx_glr_example_extending_preprocessor_thumb.png
+
+        :ref:`sphx_glr_examples_example_extending_preprocessor.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/example_extending_preprocessor
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The following example demonstrates how to create a new regression component for using in auto-s...">
+
+.. only:: html
+
+    .. figure:: /examples/images/thumb/sphx_glr_example_extending_regression_thumb.png
+
+        :ref:`sphx_glr_examples_example_extending_regression.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/example_extending_regression
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="*Auto-sklearn* uses *SMAC* to automatically optimize the hyperparameters of the training models...">
 
 .. only:: html
@@ -171,6 +211,26 @@ General introductory examples for *auto-sklearn* can be found here.
    :hidden:
 
    /examples/example_parallel
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="The following example demonstrates how to create a new classification component for using in au...">
+
+.. only:: html
+
+    .. figure:: /examples/images/thumb/sphx_glr_example_extending_classification_thumb.png
+
+        :ref:`sphx_glr_examples_example_extending_classification.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /examples/example_extending_classification
 
 .. raw:: html
 
